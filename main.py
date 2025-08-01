@@ -11,7 +11,7 @@ t = 0.12
 c = 1.0
 m = 0.02
 p = 0.4
-n_points = 10000
+n_points = 1000
 
 xs = np.linspace(0, c, n_points)
 
@@ -28,7 +28,7 @@ for x in xs:
     yt = y_t(t, x, c, NACA)
 
     # Camberline Function
-    y_camber = y_c(x, m, p, NACA)
+    y_camber = y_c(x, m, p, c, NACA)
     ys_camber.append(y_camber)
 
     # Calculate chord line coordinates
@@ -36,7 +36,7 @@ for x in xs:
     ys_chord.append(y_chord)
 
     # Angle of Slope
-    Theta = theta(x, m, p, NACA)
+    Theta = theta(x, m, p, c, NACA)
 
     # Leading edge radius calculation (not used directly in plotting)
     r_t = 1.1019 * ((t/c)**2)
@@ -52,7 +52,7 @@ for x in xs:
     ys_lower.append(y_lower)
 
 # Plotting the airfoil
-plt.figure(figsize=(20, 10))
+plt.figure(figsize=(10, 5))
 plt.plot(xs_upper, ys_upper, label='Upper Surface', color='blue')
 plt.plot(xs_lower, ys_lower, label='Lower Surface', color='red')
 plt.plot(xs, ys_camber, label='Camber Line', color='green')
@@ -63,7 +63,7 @@ plt.ylabel('Thickness (y/c)')
 plt.axhline(0, color='black', lw=2, ls='--')  # x-axis
 plt.axvline(0, color='black', lw=2, ls='--')  # y-axis
 plt.xlim(0, c)
-plt.ylim(-0.1, 0.1)  # Adjust y-limits for better visibility
+#plt.ylim(-0.1, 0.1)  # Adjust y-limits for better visibility
 plt.grid()
 plt.legend()
 plt.axis('equal')  # Equal aspect ratio

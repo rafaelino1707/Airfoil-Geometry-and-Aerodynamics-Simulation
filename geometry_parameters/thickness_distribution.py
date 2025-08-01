@@ -1,15 +1,17 @@
 import numpy as np
 
 def y_t(t, x, c, NACA_number):
+    x_c = x/c
+
     char = 0
     for number in NACA_number:
         char+=1
     
     # -- NACA Four-Digit Airfoil --
     if char == 4:
-        term1 = 5*(t/c)
-        term2 = (0.2969*np.sqrt(x/c) - 0.1260*x/c - 0.3516*((x/c)**2)
-        + 0.2843*((x/c)**3) - 0.1015*((x/c)**4))
+        term1 = 5*(t)
+        term2 = (0.2969*np.sqrt(x_c) - 0.1260*x_c - 0.3516*((x_c)**2)
+        + 0.2843*((x_c)**3) - 0.1015*((x_c)**4))
         y_t = term1 * term2
         return y_t 
     
