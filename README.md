@@ -6,13 +6,12 @@ A high-resolution geometry generator and visualizer for **NACA 4-digit airfoils*
 
 ## 📌 Features
 
-- ✅ Supports **NACA 4-digit airfoils** (e.g., `2412`, `0018`, etc.)
+- ✅ Supports **NACA 4-digit airfoils** 
 - 📈 Accurate computation of:
   - Thickness distribution
   - Camber line profile
   - Upper and lower surface geometry
-- 📐 Chord-based plotting with equal aspect ratio
-- ⚙️ Adjustable resolution (`n_points`)
+-  Chord-based plotting with equal aspect ratio
 
 ---
 
