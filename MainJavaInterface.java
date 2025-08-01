@@ -1,7 +1,6 @@
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 
 import java.util.ArrayList;
 import java.util.List;
