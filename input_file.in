@@ -1,0 +1,15 @@
+LOAD airfoil.dat
+
+
+PANE
+OPER
+Visc 1770000
+Mach 0.5
+PACC
+polar_file.txt
+
+ITER 100
+Alfa 1.0 
+
+
+quit
