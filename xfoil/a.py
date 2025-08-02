@@ -71,7 +71,7 @@ with open("input_file.in", 'w') as input_file:
     input_file.write("\n\n")
     input_file.write("quit\n")
 
-subprocess.call("xfoil.exe < input_file.in", shell=True)
+subprocess.call("xfoil/xfoil.exe < input_file.in", shell=True)
 
 
 
