@@ -1,13 +1,12 @@
   
        XFOIL         Version 6.99
   
- Calculated polar for:                                                 
+ Calculated polar for: PANE                                            
   
  1 1 Reynolds number fixed          Mach number fixed         
   
  xtrf =   1.000 (top)        1.000 (bottom)  
- Mach =   0.500     Re =     1.770 e 6     Ncrit =   9.000
+ Mach =   0.500     Re =     1.000 e 6     Ncrit =   9.000
   
    alpha    CL        CD       CDp       CM     Top_Xtr  Bot_Xtr
   ------ -------- --------- --------- -------- -------- --------
-   1.000   0.4676   0.00598   0.00137  -0.0823   0.5306   0.5394

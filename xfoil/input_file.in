@@ -1,15 +1,21 @@
 LOAD airfoil.dat
+PANE
+
+
+PPAR
+N 400
+T 1 
 
 
 PANE
 OPER
-Visc 1770000
+Visc 1000000
 Mach 0.5
 PACC
 polar_file.txt
 
 ITER 100
-Alfa 1.0 
+ALFA 5 
 
 
 quit

@@ -2,6 +2,17 @@ import os
 import subprocess
 import numpy as np
 
+
+# Caminho absoluto para o XFOIL (ajuste conforme necessário)
+xfoil_path = os.path.abspath("xfoil/xfoil.exe")
+input_file_path = os.path.abspath("xfoil/input_file.in")
+
+# Diretório de trabalho onde rodar o XFOIL
+working_dir = os.path.dirname(input_file_path)
+
+# Mude para o diretório onde está o input_file.in
+os.chdir(working_dir)
+
 # NACA 9412 parameters
 m = 0.12  # Maximum camber (2% of chord)
 p = 0.65   # Position of maximum camber (40% of chord)
@@ -48,8 +59,8 @@ with open('airfoil.dat', 'w') as file:
 #     print(f"{coord[0]:.10f} {coord[1]:.10f}")
         # %% XFOIL input file writer
 #
-if os.path.exists("polar_file.txt"):
-    os.remove("polar_file.txt")
+if os.path.exists("xfoil/polar_file.txt"):
+    os.remove("xfoil/polar_file.txt")
 
 with open("input_file.in", 'w') as input_file:
     input_file.write("LOAD airfoil.dat\n")
@@ -67,11 +78,41 @@ with open("input_file.in", 'w') as input_file:
     input_file.write("PACC\n")
     input_file.write("polar_file.txt\n\n")
     input_file.write("ITER 100\n")
-    input_file.write(f"Alfa 5 \n")
+    input_file.write(f"ALFA 5 \n")
     input_file.write("\n\n")
     input_file.write("quit\n")
 
-subprocess.call("xfoil/xfoil.exe < input_file.in", shell=True)
+#subprocess.call("Users\rafae\Documents\GitHub\Airfoil-Geometry-and-Aerodynamics-Simulation/xfoil/xfoil.exe < input_file.in", shell=True)
+
+subprocess.call(f'"{xfoil_path}" < input_file.in', shell=True)
+
+import matplotlib.pyplot as plt
+
+cl_values = []
+cd_values = []
+alpha_values = []
+
+# Leitura do polar_file corrigida
+with open("polar_file.txt") as f:
+    skipping_header = False
+    for line in f:
+        if '-----' in line:
+            skipping_header = True
+            continue
+        if not skipping_header or len(line.strip()) == 0:
+            continue
+        try:
+            parts = line.split()
+            alpha_values.append(float(parts[0]))
+            cl_values.append(float(parts[1]))
+            cd_values.append(float(parts[2]))
+        except:
+            continue
 
 
-
+plt.plot(alpha_values, cl_values)
+plt.xlabel("Alpha (°)")
+plt.ylabel("Cl")
+plt.title("Cl vs Alpha")
+plt.grid(True)
+plt.show()
