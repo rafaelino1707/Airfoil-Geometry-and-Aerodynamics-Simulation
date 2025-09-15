@@ -1,6 +1,7 @@
 import os
 import subprocess
 import numpy as np
+from xfoil import Xfoil
 
 
 # Caminho absoluto para o XFOIL (ajuste conforme necessário)
