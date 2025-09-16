@@ -6,7 +6,7 @@ from geometry_parameters.camberline_function import *
 from geometry_parameters.angle_of_slope import *
 
 # NACA 0018
-NACA = "2412"
+NACA = "3015"
 t = 0.12
 c = 1.0
 m = 0.02
